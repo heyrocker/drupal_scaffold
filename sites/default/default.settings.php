@@ -249,7 +249,20 @@
  *   );
  * @endcode
  */
-$config_directories = array();
+
+// Check to see if we are installing Drupal
+$is_ui_install = (strpos($_SERVER['SCRIPT_NAME'], '/core/install.php') === 0);
+$is_drush_install = (function_exists('drush_get_command') && (drush_get_command() == 'si' || drush_get_command() == 'site-install'));
+
+if ($is_ui_install || $is_drush_install) {
+  $config_directories = array(
+    CONFIG_SYNC_DIRECTORY => 'profiles/iastate8/config/sync',
+  );
+} else {
+  $config_directories = array(
+    CONFIG_SYNC_DIRECTORY => '../iastate8/config/sync',
+  );
+}
 
 /**
  * Settings:
