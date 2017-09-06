@@ -260,7 +260,7 @@ if ($is_ui_install || $is_drush_install) {
   );
 } else {
   $config_directories = array(
-    CONFIG_SYNC_DIRECTORY => '../iastate8/config/sync',
+    CONFIG_SYNC_DIRECTORY => '../site_config/config/sync',
   );
 }
 
